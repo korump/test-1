@@ -1,7 +1,7 @@
 #include "SudokuFitness.h"
 
-int SudokuFitness::howFit(Puzzle &puzzle) {
-  Sudoku sudoku = dynamic_cast<Sudoku &>(puzzle);
+int SudokuFitness::howFit(const Puzzle &puzzle) const {
+  Sudoku sudoku = dynamic_cast<const Sudoku &>(puzzle);
   int fitness = 0;
   vector<int> existValues;
 

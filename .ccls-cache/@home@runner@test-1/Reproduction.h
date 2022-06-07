@@ -4,5 +4,5 @@
 class Reproduction{
   public:
     virtual ~Reproduction();
-    virtual Puzzle* makeOffspring(Puzzle&);
+    virtual Puzzle* makeOffspring(const Puzzle&);
 };

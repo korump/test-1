@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class SudokuFitness : public Fitness{
+class SudokuFitness : public Fitness {
 public:
-  int howFit(Puzzle& puzzle) override;
+  int howFit(const Puzzle &puzzle) const override;
 };

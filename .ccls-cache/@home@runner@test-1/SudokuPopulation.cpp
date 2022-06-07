@@ -1,7 +1,7 @@
 #include "SudokuPopulation.h"
 
 SudokuPopulation::SudokuPopulation(int population, int generations,
-                                   Sudoku* sudoku) {
+                                   Sudoku *sudoku) {
   popSize = population;
 
   for (int i = 0; i < 9; i++) {
@@ -17,29 +17,22 @@ SudokuPopulation::SudokuPopulation(int population, int generations,
 
   for (int i = 0; i < popSize; i++) {
     Puzzle *newSudoku = factory->createPuzzle(*sudoku);
-    members.push(newSudoku);
+    members.push(*newSudoku);
   }
 }
 
-SudokuFitness* SudokuPopulation::getFitness() {
-  
-  return fitness;
-}
-  
-SudokuFactory* SudokuPopulation::getFactory(){
-  return factory;
-}
+SudokuFitness *SudokuPopulation::getFitness() { return fitness; }
 
-SudokuOffspring* SudokuPopulation::getReproduction(){
-  return reproduction;
-}
+SudokuFactory *SudokuPopulation::getFactory() { return factory; }
 
-priority_queue<Puzzle *, vector<Puzzle *>, compare> SudokuPopulation::getMembers(){
+SudokuOffspring *SudokuPopulation::getReproduction() { return reproduction; }
+
+priority_queue<Puzzle, vector<Puzzle>, compare> SudokuPopulation::getMembers() {
   return members;
 }
 
 void SudokuPopulation::cull(int x) {
-  priority_queue<Puzzle *, vector<Puzzle *>, compare> temp;
+  priority_queue<Puzzle, vector<Puzzle>, compare> temp;
 
   int keepCount = 100 - x;
 
@@ -51,25 +44,20 @@ void SudokuPopulation::cull(int x) {
 }
 
 void SudokuPopulation::newGeneration() {
-  priority_queue<Puzzle *, vector<Puzzle *>, compare> temp = members;
+  priority_queue<Puzzle, vector<Puzzle>, compare> temp = members;
 
-  Puzzle *curSudoku; 
+  Puzzle *curSudoku;
   int toFill = popSize - members.size();
   int offspringCount = toFill / members.size();
 
   for (int i = 0; i < toFill; i += 10) {
     for (int i = 0; i < offspringCount; i++) {
-      curSudoku = temp.top();
+      members.push(*reproduction->makeOffspring(temp.top()));
       temp.pop();
-      members.push(reproduction->makeOffspring(*curSudoku)); 
     }
   }
 }
 
-int SudokuPopulation::bestFitness() {
-  return fitness->howFit(*members.top()); 
-}
+int SudokuPopulation::bestFitness() { return fitness->howFit(members.top()); }
 
-Puzzle *SudokuPopulation::bestIndividual() {
-  return members.top();
-}
+Puzzle* SudokuPopulation::bestIndividual() { return members.top(); }
