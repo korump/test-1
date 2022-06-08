@@ -27,19 +27,19 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
 
   reproduction->setProb(5);
 
-  // for (int i = 1; i <= maxGen; i++) {
-  //   int bestFit = population->bestFitness();
-  //   if (bestFit == 0) {
-  //     cout << "Best Individual\n";
-  //     cout << population->bestIndividual();
-  //     break;
-  //   }
-  //   if (i == maxGen) {
-  //     cout << "Best Individual\n";
-  //     cout << population->bestIndividual();
-  //     break;
-  //     population->cull(90);
-  //     population->newGeneration();
-  //   }
-  // }
+  for (int i = 1; i <= maxGen; i++) {
+    int bestFit = population->bestFitness();
+    if (bestFit == 0) {
+      cout << "Best Individual\n";
+      cout << population->bestIndividual();
+      break;
+    }
+    if (i == maxGen) {
+      cout << "Best Individual\n";
+      cout << population->bestIndividual();
+      break;
+      population->cull(90);
+      population->newGeneration();
+    }
+  }
 }

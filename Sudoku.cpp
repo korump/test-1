@@ -2,11 +2,13 @@
 #include <random>
 
 Sudoku::Sudoku() {
-  for (int i = 0; i < 9; i++) {
-    for (int j = 0; j < 9; j++) {
-      grid[i][j] = 0;
-    }
-  }
+  // for (int i = 0; i < 9; i++) {
+  //   for (int j = 0; j < 9; j++) {
+  //     grid[i][j] = 0;
+  //   }
+  // }
+
+  findFitness();
 }
 
 bool Sudoku::getFixedValue(int x, int y) { return fixedValue[x][y]; }

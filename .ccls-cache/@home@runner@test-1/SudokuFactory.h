@@ -4,7 +4,8 @@
 #include "Sudoku.h"
 
 class SudokuFactory : public PuzzleFactory{
+  private:
+    SudokuOffspring rep;
   public:
-    SudokuFactory();
     Sudoku* createPuzzle(Puzzle&) override;
 };
