@@ -13,9 +13,9 @@ struct compare {
 
 class SudokuPopulation : public Population {
 private:
-  SudokuFitness* fitness;
-  SudokuFactory* factory;
-  SudokuOffspring* reproduction; 
+  SudokuFitness fitness;
+  SudokuFactory factory;
+  SudokuOffspring reproduction; 
 
   //bool fixedValue[9][9];
 
@@ -30,9 +30,9 @@ public:
 
   priority_queue<Puzzle*, vector<Puzzle*>, compare> getMembers();
 
-  SudokuFitness* getFitness();
-  SudokuFactory* getFactory();
-  SudokuOffspring* getReproduction();
+  SudokuFitness getFitness();
+  SudokuFactory getFactory();
+  SudokuOffspring getReproduction();
   
 
   void cull(int) override;

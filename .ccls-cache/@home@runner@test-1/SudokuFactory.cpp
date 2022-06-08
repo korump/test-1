@@ -1,8 +1,7 @@
 #include "SudokuFactory.h"
 
 SudokuFactory::SudokuFactory() {
-  SudokuOffspring* sudOff = new SudokuOffspring();
-  rep = sudOff;
+  rep = new SudokuOffspring();
 }
 
 Sudoku* SudokuFactory::createPuzzle(Puzzle& puzzle) {

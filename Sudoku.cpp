@@ -60,6 +60,7 @@ ostream &Sudoku::print(ostream &output) {
 void Sudoku::findFitness() {
   vector<int> existValues;
 
+
   // Check each row for conflicts
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
@@ -74,7 +75,7 @@ void Sudoku::findFitness() {
     }
     existValues.clear();
   }
-
+  
   // Check each column for conflicts
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
@@ -83,12 +84,13 @@ void Sudoku::findFitness() {
           end(existValues)) {
         existValues.push_back(curVal);
       } else {
-        fitness++;
+        fitIncrease++;
+        //fitness++;
       }
     }
     existValues.clear();
   }
-
+  
   // Check each 3x3 block for conflicts
   for (int row = 0; row < 9; row += 3) {
     for (int col = 0; col < 9; col += 3) {
@@ -99,7 +101,8 @@ void Sudoku::findFitness() {
               end(existValues)) {
             existValues.push_back(curVal);
           } else {
-            fitness++;
+            fitIncrease++;
+            //fitness++;
           }
         }
       }

@@ -10,21 +10,17 @@ SudokuPopulation::SudokuPopulation(int population, Sudoku *sudoku) {
   //   }
   // }
 
-  fitness = new SudokuFitness(); 
-  factory = new SudokuFactory();
-  reproduction = new SudokuOffspring();
-
   for (int i = 0; i < popSize; i++) {
-    Puzzle *newSudoku = factory->createPuzzle(*sudoku);
+    Puzzle *newSudoku = factory.createPuzzle(*sudoku);
     members.push(newSudoku);
   }
 }
 
-SudokuFitness *SudokuPopulation::getFitness() { return fitness; }
+SudokuFitness SudokuPopulation::getFitness() { return fitness; }
 
-SudokuFactory *SudokuPopulation::getFactory() { return factory; }
+SudokuFactory SudokuPopulation::getFactory() { return factory; }
 
-SudokuOffspring *SudokuPopulation::getReproduction() { return reproduction; }
+SudokuOffspring SudokuPopulation::getReproduction() { return reproduction; }
 
 priority_queue<Puzzle*, vector<Puzzle*>, compare> SudokuPopulation::getMembers() {
   return members;
@@ -51,13 +47,13 @@ void SudokuPopulation::newGeneration() {
 
   for (int i = 0; i < toFill; i += 10) {
     for (int i = 0; i < offspringCount; i++) {
-      members.push(reproduction->makeOffspring(*temp.top()));
+      members.push(reproduction.makeOffspring(*temp.top()));
       temp.pop();
     }
   }
 }
 
-int SudokuPopulation::bestFitness() { return fitness->howFit(*members.top()); }
+int SudokuPopulation::bestFitness() { return fitness.howFit(*members.top()); }
 
 Puzzle* SudokuPopulation::bestIndividual() {
   return members.top(); 
