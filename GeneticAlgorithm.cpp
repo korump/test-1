@@ -5,8 +5,10 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
 
   cout << "Enter Sudoku: ";
   cin >> sudoku;
-  
-  cout << sudoku;  //debug
+
+  //Debug
+  cout << "Original: \n";
+  cout << sudoku;  
   
   SudokuPopulation *population = new SudokuPopulation(popSize, sudoku);
   SudokuOffspring *reproduction = population->getReproduction();
@@ -17,9 +19,14 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
     Sudoku *curSudoku = reproduction->makeOffspring(*sudoku);
     population->getMembers().push(curSudoku);
 
+    //Debug
+    cout << "Test: \n";
+    cout << curSudoku;
+    cout << "\nFitness" << fitness->howFit(*curSudoku) << '\n';
+    
     if (fitness->howFit(*curSudoku) == 0) {
+      cout << "Solution:\n" << fitness->howFit(*curSudoku); 
       cout << curSudoku;
-      cout << "Solution\n" << fitness->howFit(*curSudoku);
     }
   }
 

@@ -3,16 +3,20 @@
 
 using namespace std;
 
-class Puzzle{
-  protected:
-    int fitness = 0;
-  public:
-    ~Puzzle(){};
-    friend void operator<<(ostream&, Puzzle*);
-    friend void operator>>(istream&, Puzzle*);
+class Puzzle {
+protected:
+  string data;
+  int fitness = 0;
 
-    virtual void read(string) = 0;
-    virtual ostream& print(ostream&) = 0;
+public:
+  ~Puzzle(){};
+  friend void operator<<(ostream &, Puzzle *);
+  friend void operator>>(istream &, Puzzle *);
 
-    virtual void findFitness() = 0;
+  string getData() const { return data; };
+
+  virtual void read(string) = 0;
+  virtual ostream &print(ostream &) = 0;
+
+  virtual void findFitness() = 0;
 };

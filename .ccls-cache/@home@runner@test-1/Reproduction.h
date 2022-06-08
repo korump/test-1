@@ -4,5 +4,5 @@
 class Reproduction{
   public:
     virtual ~Reproduction(){};
-    Puzzle* makeOffspring( Puzzle&);
+    virtual Puzzle* makeOffspring( Puzzle&) = 0;
 }; 

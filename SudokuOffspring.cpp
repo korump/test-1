@@ -23,22 +23,20 @@
 void SudokuOffspring::setProb(int prob) { probability = prob; }
 
 // const to no const
-Sudoku *SudokuOffspring::makeOffspring(Sudoku& sudoku) {
-  Sudoku sudokuPuzzle = dynamic_cast<Sudoku &>(sudoku);
-
-  Sudoku *newPuzzle = new Sudoku();
-
+Sudoku *SudokuOffspring::makeOffspring(Puzzle &sudoku) {
+  Sudoku *newPuzzle = new Sudoku(sudoku.getData());
   // copy the old puzzle to new puzzle and mutating the value by using the
   // rand() value.
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
-      if (sudokuPuzzle.getFixedValue(i, j) == false) {
+      if (newPuzzle->getFixedValue(i, j) == false) {
         if (rand() % 100 < probability) {
           newPuzzle->setValue(i, j, (rand() % 9 + 1));
         }
-      } else {
-        int curIndex = sudokuPuzzle.getValue(i, j);
-        newPuzzle->setValue(i, j, curIndex);
+        // } else {
+        //   int curIndex = sudokuPuzzle->getValue(i, j);
+        //   newPuzzle->setValue(i, j, curIndex);
+        // }
       }
     }
   }

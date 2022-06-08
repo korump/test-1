@@ -6,9 +6,9 @@ class SudokuOffspring : public Reproduction {
 private:
   bool valueChange[9][9];
   void checkFixed(Sudoku &);
-  int probability = 0;
+  int probability = 100;
 
 public:
-  Sudoku *makeOffspring(Sudoku&);
+  Sudoku *makeOffspring(Puzzle&) override;
   void setProb(int);
 };

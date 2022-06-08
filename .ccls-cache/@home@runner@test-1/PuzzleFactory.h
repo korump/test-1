@@ -2,7 +2,7 @@
 #pragma once
 
 class PuzzleFactory{
-  private:
+  protected:
     Reproduction* rep;
   public:
     virtual ~PuzzleFactory(){};

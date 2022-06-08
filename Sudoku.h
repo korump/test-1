@@ -10,7 +10,8 @@ private:
   int grid[9][9];
   bool fixedValue[9][9];
 public:
-  Sudoku();
+  Sudoku(){};
+  Sudoku(string);
   ~Sudoku(){};
 
   bool getFixedValue(int, int);
