@@ -111,5 +111,3 @@ void Sudoku::findFitness() {
     }
   }
 }
-
-int Sudoku::getFitness() { return fitness; }

@@ -19,4 +19,5 @@ public:
   virtual ostream &print(ostream &) = 0;
 
   virtual void findFitness() = 0;
+  int getFitness() { return fitness; };
 };

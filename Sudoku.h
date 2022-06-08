@@ -22,5 +22,4 @@ public:
   ostream &print(ostream&) override;
 
   void findFitness() override;
-  int getFitness();
 };
