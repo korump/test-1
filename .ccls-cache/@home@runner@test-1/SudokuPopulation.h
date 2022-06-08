@@ -5,9 +5,9 @@
 #include "SudokuOffspring.h"
 
 struct compare {
-  bool operator()(Puzzle &a, Puzzle &b) {
-    Fitness fit;
-    return fit.howFit(a) < fit.howFit(b);
+  bool operator()(Puzzle* &a, Puzzle* &b) {
+    Fitness* fit;
+    return fit->howFit(*a) < fit->howFit(*b);
   }
 };
 
@@ -21,14 +21,14 @@ private:
 
   int popSize;
 
-  // priority_queue<Puzzle *, vector<Puzzle *>, compare> members;
-priority_queue<Puzzle, vector<Puzzle>, compare> members;
+   priority_queue<Puzzle *, vector<Puzzle *>, compare> members;
+//priority_queue<Puzzle, vector<Puzzle>, compare> members;
 
 public:
   // SudokuPopulation(int population, int generations, Puzzle &puzzle);
-  SudokuPopulation(int population, int generations, Sudoku* sudoku);
+  SudokuPopulation(int population, Sudoku* sudoku);
 
-  priority_queue<Puzzle, vector<Puzzle>, compare> getMembers();
+  priority_queue<Puzzle*, vector<Puzzle*>, compare> getMembers();
 
   SudokuFitness* getFitness();
   SudokuFactory* getFactory();

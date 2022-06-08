@@ -1,17 +1,14 @@
 #include "Sudoku.h"
 #include <random>
 
-// Sudoku::Sudoku() {
-//   for(int i = 0; i < 9; i++){
-//     for(int j = 0; j < 9; j++){
-//       grid[i][j] = 0;
-//     }
-//   }
-// }
+Sudoku::Sudoku() {
+  for(int i = 0; i < 9; i++){
+    for(int j = 0; j < 9; j++){
+      grid[i][j] = 0;
+    }
+  }
+}
 
-// Sudoku::~Sudoku(){
-  
-// }
 bool Sudoku::getFixedValue(int x, int y){
   return fixedValue[x][y];
 }
@@ -48,7 +45,8 @@ void Sudoku::read(string sudokuNums){
       }
     }
     if (isdigit(c)) {
-      grid[x][y] = c;
+      grid[x][y] = c-'0';
+      //this->print(cout);
       x++;
     }
   }

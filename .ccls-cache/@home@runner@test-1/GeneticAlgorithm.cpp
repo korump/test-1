@@ -4,7 +4,7 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
   Sudoku *sudoku = new Sudoku();
   cin >> sudoku;
 
-  SudokuPopulation *population = new SudokuPopulation(popSize, maxGen, sudoku);
+  SudokuPopulation *population = new SudokuPopulation(popSize, sudoku);
   SudokuOffspring* reproduction = population->getReproduction();
   SudokuFitness* fitness = population->getFitness();
   

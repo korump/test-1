@@ -22,7 +22,8 @@
 
 void SudokuOffspring::setProb(int prob) { probability = prob; }
 
-Sudoku *SudokuOffspring::makeOffspring(const Puzzle &puzzle) {
+//const to no const
+Sudoku *SudokuOffspring::makeOffspring( Puzzle &puzzle) {
   Sudoku sudokuPuzzle = dynamic_cast<Sudoku &>(puzzle);
 
   Sudoku *newPuzzle = new Sudoku();

@@ -9,6 +9,6 @@ private:
   int probability = 100;
 
 public:
-  Sudoku *makeOffspring(const Puzzle &) override;
+  Sudoku *makeOffspring( Puzzle &) override;
   void setProb(int);
 };

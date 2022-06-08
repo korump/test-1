@@ -19,9 +19,7 @@ private:
 //   priority_queue<Puzzle *, vector<Puzzle *>, compare> members;
 
 public:
-  Population();
-  virtual ~Population();
-
+  virtual ~Population(){};
   virtual void cull(int) = 0;
   virtual void newGeneration() = 0;
   virtual int bestFitness() = 0;

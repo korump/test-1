@@ -5,5 +5,5 @@
 class Fitness {
 public:
   virtual ~Fitness(){};
-  virtual int howFit(const Puzzle &puzzle) const = 0;
+  virtual int howFit( const Puzzle &puzzle) const = 0;
 };

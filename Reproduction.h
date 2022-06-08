@@ -3,6 +3,6 @@
 
 class Reproduction{
   public:
-    virtual ~Reproduction();
-    virtual Puzzle* makeOffspring(const Puzzle&);
-};
+    virtual ~Reproduction(){};
+    virtual Puzzle* makeOffspring( Puzzle&) = 0;
+}; 

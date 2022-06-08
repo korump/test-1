@@ -9,7 +9,7 @@ private:
   bool fixedValue[9][9];
 public:
   Sudoku();
-  ~Sudoku();
+  ~Sudoku(){};
 
   bool getFixedValue(int, int);
   int getValue(int, int);
