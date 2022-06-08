@@ -10,6 +10,7 @@ Sudoku::Sudoku(string input) {
       fixedValue[i][j] = (curVal != 0);
     }
   }
+  findFitness();
 }
 
 bool Sudoku::getFixedValue(int x, int y) { return fixedValue[x][y]; }
@@ -60,7 +61,6 @@ ostream &Sudoku::print(ostream &output) {
 void Sudoku::findFitness() {
   vector<int> existValues;
 
-
   // Check each row for conflicts
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
@@ -75,8 +75,8 @@ void Sudoku::findFitness() {
     }
     existValues.clear();
   }
-  
-  // Check each column for conflicts
+
+  //Check each column for conflicts
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
       int curVal = getValue(j, i);
@@ -84,8 +84,7 @@ void Sudoku::findFitness() {
           end(existValues)) {
         existValues.push_back(curVal);
       } else {
-        fitIncrease++;
-        //fitness++;
+        fitness++;
       }
     }
     existValues.clear();
@@ -95,20 +94,20 @@ void Sudoku::findFitness() {
   for (int row = 0; row < 9; row += 3) {
     for (int col = 0; col < 9; col += 3) {
       for (int i = row; i < row + 3; i++) {
-        for (int j = col; i < col + 3; j++) {
+        for (int j = col; j < col + 3; j++) {
           int curVal = getValue(i, j);
           if (find(begin(existValues), end(existValues), curVal) ==
               end(existValues)) {
             existValues.push_back(curVal);
           } else {
-            fitIncrease++;
-            //fitness++;
+            fitness++;
           }
         }
       }
       existValues.clear();
     }
   }
+  cout << "The Fitness is: " << fitness << endl;
 }
 
 int Sudoku::getFitness() { return fitness; }

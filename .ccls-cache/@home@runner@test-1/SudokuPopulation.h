@@ -5,9 +5,20 @@
 #include "SudokuOffspring.h"
 
 struct compare {
-  bool operator()(Puzzle* &a, Puzzle* &b) {
+  // change bool
+//bool operator()(Puzzle* &a, Puzzle* &b) {
+  bool operator()(Puzzle* a, Puzzle* b) {
     Fitness* fit;
-    return fit->howFit(*a) < fit->howFit(*b);
+    
+    // if(fit->howFit(*a) < fit->howFit(*b)){
+    //   return true;
+    // }
+    // else{
+    //   return false;
+    // }
+    //bool x = fit->howFit(*a) < fit->howFit(*b);
+    return fit->howFit(*a) > fit->howFit(*b);
+    //return x;
   }
 };
 
@@ -21,7 +32,7 @@ private:
 
   int popSize;
 
-   priority_queue<Puzzle *, vector<Puzzle *>, compare> members;
+   priority_queue<Puzzle*, vector<Puzzle*>, compare> members;
 //priority_queue<Puzzle, vector<Puzzle>, compare> members;
 
 public:

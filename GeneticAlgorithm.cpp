@@ -23,6 +23,7 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
     cout << "Test: \n";
     cout << curSudoku;
     cout << "Fitness: " << fitness.howFit(*curSudoku) << '\n';
+
     
     if (fitness.howFit(*curSudoku) == 0) {
       cout << "Solution:\n"; 
@@ -33,7 +34,7 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
 
   // Sets mutation probability to 5% for future generations
 
-  reproduction.setProb(5);
+  // reproduction.setProb(5);
 
   for (int i = 1; i <= maxGen; i++) {
     int bestFit = population.bestFitness();
