@@ -5,7 +5,9 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
 
   cout << "Enter Sudoku: ";
   cin >> sudoku;
-
+  
+  cout << sudoku;  //debug
+  
   SudokuPopulation *population = new SudokuPopulation(popSize, sudoku);
   SudokuOffspring *reproduction = population->getReproduction();
   SudokuFitness *fitness = population->getFitness();
@@ -17,13 +19,13 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
 
     if (fitness->howFit(*curSudoku) == 0) {
       cout << curSudoku;
-      cout << " " << fitness->howFit(*curSudoku) << "Best Puzzle";
+      cout << "Solution\n" << fitness->howFit(*curSudoku);
     }
   }
 
   // Sets mutation probability to 5% for future generations
-  
-  // reproduction->setProb(5);
+
+  reproduction->setProb(5);
 
   // for (int i = 1; i <= maxGen; i++) {
   //   int bestFit = population->bestFitness();
@@ -36,8 +38,8 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
   //     cout << "Best Individual\n";
   //     cout << population->bestIndividual();
   //     break;
-  //   }  //maybe condense
-  //   population->cull(90);
-  //   population->newGeneration();
+  //     population->cull(90);
+  //     population->newGeneration();
+  //   }
   // }
 }

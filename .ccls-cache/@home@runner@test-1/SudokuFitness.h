@@ -9,5 +9,5 @@ using namespace std;
 
 class SudokuFitness : public Fitness {
 public:
-  int howFit(const Puzzle &puzzle) const override;
+  int howFit(Puzzle &puzzle) override;
 };

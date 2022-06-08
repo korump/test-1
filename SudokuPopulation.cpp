@@ -16,7 +16,6 @@ SudokuPopulation::SudokuPopulation(int population, Sudoku *sudoku) {
 
   for (int i = 0; i < popSize; i++) {
     Puzzle *newSudoku = factory->createPuzzle(*sudoku);
-    //*newSudo
     members.push(newSudoku);
   }
 }

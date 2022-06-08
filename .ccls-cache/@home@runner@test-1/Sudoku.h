@@ -1,5 +1,7 @@
 #pragma once
 #include "Puzzle.h"
+#include <algorithm>
+#include <vector>
 using namespace std;
 
 
@@ -17,4 +19,7 @@ public:
 
   void read(string) override;
   ostream &print(ostream&) override;
+
+  void findFitness() override;
+  int getFitness();
 };
