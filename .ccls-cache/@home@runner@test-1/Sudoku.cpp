@@ -10,8 +10,6 @@ Sudoku::Sudoku(string input) {
       fixedValue[i][j] = (curVal != 0);
     }
   }
-
-  findFitness();
 }
 
 bool Sudoku::getFixedValue(int x, int y) { return fixedValue[x][y]; }
@@ -80,8 +78,7 @@ void Sudoku::findFitness() {
   // Check each column for conflicts
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
-      // int curVal = sudoku.getValue(j, i);
-      int curVal = 5;
+      int curVal = getValue(j, i);
       if (find(begin(existValues), end(existValues), curVal) ==
           end(existValues)) {
         existValues.push_back(curVal);
@@ -97,8 +94,7 @@ void Sudoku::findFitness() {
     for (int col = 0; col < 9; col += 3) {
       for (int i = row; i < row + 3; i++) {
         for (int j = col; i < col + 3; j++) {
-          // int curVal = sudoku.getValue(i, j);
-          int curVal = 5;
+          int curVal = getValue(i, j);
           if (find(begin(existValues), end(existValues), curVal) ==
               end(existValues)) {
             existValues.push_back(curVal);

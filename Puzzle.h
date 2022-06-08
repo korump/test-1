@@ -6,7 +6,7 @@ using namespace std;
 class Puzzle {
 protected:
   string data;
-  int fitness = 0;
+  int fitness;
 
 public:
   ~Puzzle(){};
@@ -19,5 +19,4 @@ public:
   virtual ostream &print(ostream &) = 0;
 
   virtual void findFitness() = 0;
-  int getFitness() { return fitness; };
 };

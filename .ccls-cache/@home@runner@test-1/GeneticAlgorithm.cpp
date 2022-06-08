@@ -22,11 +22,12 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
     //Debug
     cout << "Test: \n";
     cout << curSudoku;
-    cout << "\nFitness" << fitness->howFit(*curSudoku) << '\n';
+    cout << "Fitness: " << fitness->howFit(*curSudoku) << '\n';
     
     if (fitness->howFit(*curSudoku) == 0) {
-      cout << "Solution:\n" << fitness->howFit(*curSudoku); 
+      cout << "Solution:\n"; 
       cout << curSudoku;
+      cout << "Fitness: " << fitness->howFit(*curSudoku) << '\n';
     }
   }
 
@@ -34,19 +35,19 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
 
   reproduction->setProb(5);
 
-  // for (int i = 1; i <= maxGen; i++) {
-  //   int bestFit = population->bestFitness();
-  //   if (bestFit == 0) {
-  //     cout << "Best Individual\n";
-  //     cout << population->bestIndividual();
-  //     break;
-  //   }
-  //   if (i == maxGen) {
-  //     cout << "Best Individual\n";
-  //     cout << population->bestIndividual();
-  //     break;
-  //     population->cull(90);
-  //     population->newGeneration();
-  //   }
-  // }
+  for (int i = 1; i <= maxGen; i++) {
+    int bestFit = population->bestFitness();
+    if (bestFit == 0) {
+      cout << "Best Individual\n";
+      cout << population->bestIndividual();
+      break;
+    }
+    if (i == maxGen) {
+      cout << "Best Individual\n";
+      cout << population->bestIndividual();
+      break;
+      population->cull(90);
+      population->newGeneration();
+    }
+  }
 }

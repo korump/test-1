@@ -3,12 +3,12 @@
 SudokuPopulation::SudokuPopulation(int population, Sudoku *sudoku) {
   popSize = population;
 
-  for (int i = 0; i < 9; i++) {
-    for (int j = 0; j < 9; j++) {
-      int curVal = sudoku->getValue(i, j);
-      fixedValue[i][j] = (curVal != 0);
-    }
-  }
+  // for (int i = 0; i < 9; i++) {
+  //   for (int j = 0; j < 9; j++) {
+  //     int curVal = sudoku->getValue(i, j);
+  //     fixedValue[i][j] = (curVal != 0);
+  //   }
+  // }
 
   fitness = new SudokuFitness(); 
   factory = new SudokuFactory();
