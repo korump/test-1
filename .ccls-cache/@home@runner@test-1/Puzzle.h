@@ -6,7 +6,7 @@ using namespace std;
 class Puzzle{
   public:
     ~Puzzle(){};
-    void operator<<(ostream&);
+    friend void operator<<(ostream&, Puzzle*);
     friend void operator>>(istream&, Puzzle*);
 
     virtual void read(string) = 0;

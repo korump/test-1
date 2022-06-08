@@ -37,16 +37,15 @@ void Sudoku::read(string sudokuNums){
   // }
 
   for(char& c : sudokuNums){
-    if (x > 9) {
+    if (x > 8) {
       y++;
       x = 0;
-      if(y > 9){
+      if(y > 8){
         break;
       }
     }
     if (isdigit(c)) {
-      grid[x][y] = c-'0';
-      //this->print(cout);
+      grid[y][x] = c-'0';
       x++;
     }
   }

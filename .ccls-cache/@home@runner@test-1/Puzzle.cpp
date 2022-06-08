@@ -1,7 +1,7 @@
 #include "Puzzle.h"
 
-void Puzzle::operator<<(ostream& output) { 
-  print(output); 
+void operator<<(ostream& output, Puzzle* puzzle) { 
+  puzzle->print(output); 
   }
 
 void operator>>(istream &input, Puzzle* puzzle) {
