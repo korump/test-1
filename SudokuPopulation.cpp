@@ -42,7 +42,7 @@ void SudokuPopulation::cull(int x) {
 }
 
 
-// creating new Sudokus from the 
+// creating new Sudokus  
 void SudokuPopulation::newGeneration() {
   priority_queue<Puzzle*, vector<Puzzle*>, compare> temp = members;
 
