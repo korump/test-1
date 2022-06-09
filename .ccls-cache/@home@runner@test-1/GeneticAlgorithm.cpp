@@ -1,6 +1,7 @@
 #include "GeneticAlgorithm.h"
 
 GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
+  // creating new Sudoku
   Sudoku *sudoku = new Sudoku();
 
   cout << "Enter Sudoku: ";
@@ -9,8 +10,10 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
   //Debug
   cout << "Original: \n";
   cout << sudoku;  
-  
+
+  // calling Population
   SudokuPopulation population(popSize, sudoku);
+  // calling the Reproduction class.
   SudokuOffspring reproduction = population.getReproduction();
   SudokuFitness fitness = population.getFitness();
 
@@ -19,12 +22,7 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
     Sudoku *curSudoku = reproduction.makeOffspring(*sudoku);
     population.getMembers().push(curSudoku);
 
-    //Debug
-    cout << "Test: \n";
-    cout << curSudoku;
-    cout << "Fitness: " << fitness.howFit(*curSudoku) << '\n';
-
-    
+    // the Best Sudoku with zero fitness, prints Sudoku and its fitness.
     if (fitness.howFit(*curSudoku) == 0) {
       cout << "Solution:\n"; 
       cout << curSudoku;
@@ -34,10 +32,12 @@ GeneticAlgorithm::GeneticAlgorithm(int popSize, int maxGen) {
 
   // Sets mutation probability to 5% for future generations
 
-  // reproduction.setProb(5);
+   reproduction.setProb(5);
 
+  // goes's through the 
   for (int i = 1; i <= maxGen; i++) {
     int bestFit = population.bestFitness();
+    // prints the best Individual
     if (bestFit == 0) {
       cout << "Best Individual\n";
       cout << population.bestIndividual();

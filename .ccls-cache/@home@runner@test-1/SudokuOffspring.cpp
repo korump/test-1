@@ -3,26 +3,12 @@
 #include <ctime>
 #include <random>
 
-// void SudokuOffspring::checkFixed(Sudoku &sudoku) {
 
-//   srand(time(0));
-//   for (int i = 0; i < 9; i++) {
-//     for (int j = 0; j < 9; j++) {
-//       int curIndex = sudoku.getValue(i, j);
-//       // if(curIndex == 0){
-//       //   valueChange[i][j] = false;
-//       // }
-//       // else{
-//       //   valueChange[i][j] = true;
-//       // }
-//       valueChange[i][j] = (curIndex != 0);
-//     }
-//   }
-// }
-
+// sets the probability.
 void SudokuOffspring::setProb(int prob) { probability = prob; }
 
-// const to no const
+
+// Makes new Sudoku, Copys from old sudoku and mutates Sudoku with rand value
 Sudoku *SudokuOffspring::makeOffspring(Puzzle &sudoku) {
   Sudoku *newPuzzle = new Sudoku(sudoku.getData());
   // copy the old puzzle to new puzzle and mutating the value by using the
@@ -33,10 +19,6 @@ Sudoku *SudokuOffspring::makeOffspring(Puzzle &sudoku) {
         if (rand() % 100 < probability) {
           newPuzzle->setValue(i, j, (rand() % 9 + 1));
         }
-        // } else {
-        //   int curIndex = sudokuPuzzle->getValue(i, j);
-        //   newPuzzle->setValue(i, j, curIndex);
-        // }
       }
     }
   }

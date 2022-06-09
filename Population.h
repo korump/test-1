@@ -9,17 +9,17 @@
 
 class Population {
 private:
+  //Fitness pointer
   Fitness *fitness;
+  //Puzzle Factory pointer
   PuzzleFactory *factory;
+  //Reporduction pointer
   Reproduction *reproduction;
 
-// protected:
-//   int popSize;
-
-//   priority_queue<Puzzle *, vector<Puzzle *>, compare> members;
-
 public:
+  //population destructor
   virtual ~Population(){};
+  // Virtual fuctions.
   virtual void cull(int) = 0;
   virtual void newGeneration() = 0;
   virtual int bestFitness() = 0;

@@ -4,39 +4,28 @@
 #include "SudokuFitness.h"
 #include "SudokuOffspring.h"
 
+
+//Compares two Puzzle's by their fitness value and return bool value
 struct compare {
-  // change bool
-//bool operator()(Puzzle* &a, Puzzle* &b) {
   bool operator()(Puzzle* a, Puzzle* b) {
     Fitness* fit;
-    
-    // if(fit->howFit(*a) < fit->howFit(*b)){
-    //   return true;
-    // }
-    // else{
-    //   return false;
-    // }
-    //bool x = fit->howFit(*a) < fit->howFit(*b);
-    return fit->howFit(*a) > fit->howFit(*b);
-    //return x;
+    return fit->howFit(*a) < fit->howFit(*b);
   }
 };
 
+//Sudoku Population is a derived from the population class,
 class SudokuPopulation : public Population {
 private:
   SudokuFitness fitness;
   SudokuFactory factory;
   SudokuOffspring reproduction; 
 
-  //bool fixedValue[9][9];
 
   int popSize;
 
-   priority_queue<Puzzle*, vector<Puzzle*>, compare> members;
-//priority_queue<Puzzle, vector<Puzzle>, compare> members;
-
+  // min heap of priority queue
+  priority_queue<Puzzle*, vector<Puzzle*>, compare> members;
 public:
-  // SudokuPopulation(int population, int generations, Puzzle &puzzle);
   SudokuPopulation(int population, Sudoku* sudoku);
 
   priority_queue<Puzzle*, vector<Puzzle*>, compare> getMembers();

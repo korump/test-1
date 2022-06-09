@@ -3,6 +3,7 @@
 #include "SudokuOffspring.h"
 #include "Sudoku.h"
 
+// SudokuFactory id derived from PuzzleFactory
 class SudokuFactory : public PuzzleFactory{
   public:
     SudokuFactory();

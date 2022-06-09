@@ -1,23 +1,29 @@
 #include "Sudoku.h"
 #include <random>
 
+// Reads through the string the fills the grid.
 Sudoku::Sudoku(string input) {
   read(input);
   
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
       int curVal = getValue(i, j);
+      //checks if they are zeros in the string and sets the array of fixedValue to false
       fixedValue[i][j] = (curVal != 0);
     }
   }
   findFitness();
 }
 
+// get the index position that needs to be changed.
 bool Sudoku::getFixedValue(int x, int y) { return fixedValue[x][y]; }
 
+// gets the value from the grid.
 int Sudoku::getValue(int x, int y) { return grid[x][y]; }
+//sets the value in the grid
 void Sudoku::setValue(int x, int y, int value) { grid[x][y] = value; }
 
+// read through the string and fills in the array of grid
 void Sudoku::read(string sudokuNums) {
   data = sudokuNums;
   int x = 0;
@@ -38,6 +44,7 @@ void Sudoku::read(string sudokuNums) {
   }
 }
 
+// prints out the Sudoku in format
 ostream &Sudoku::print(ostream &output) {
   string format = "+-------+-------+-------+\n";
   output << format;
@@ -107,7 +114,6 @@ void Sudoku::findFitness() {
       existValues.clear();
     }
   }
-  cout << "The Fitness is: " << fitness << endl;
 }
 
 int Sudoku::getFitness() { return fitness; }

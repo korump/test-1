@@ -1,36 +1,39 @@
 #include "SudokuPopulation.h"
 
+
+// generates number of sudoku from population size.
 SudokuPopulation::SudokuPopulation(int population, Sudoku *sudoku) {
   popSize = population;
 
-  // for (int i = 0; i < 9; i++) {
-  //   for (int j = 0; j < 9; j++) {
-  //     int curVal = sudoku->getValue(i, j);
-  //     fixedValue[i][j] = (curVal != 0);
-  //   }
-  // }
-
+  // Generates sudokus by calling the create puzzle
   for (int i = 0; i < popSize; i++) {
     Puzzle *newSudoku = factory.createPuzzle(*sudoku);
+    //stores Sudokus in priority queue
     members.push(newSudoku);
   }
 }
 
+// gets fitness value
 SudokuFitness SudokuPopulation::getFitness() { return fitness; }
 
+// gets factory
 SudokuFactory SudokuPopulation::getFactory() { return factory; }
 
+// getter for reproduction
 SudokuOffspring SudokuPopulation::getReproduction() { return reproduction; }
 
+// getter for prioity queue
 priority_queue<Puzzle*, vector<Puzzle*>, compare> SudokuPopulation::getMembers() {
   return members;
 }
 
+// Removes the Sudokus from prioity queue based on Cull percent.
 void SudokuPopulation::cull(int x) {
   priority_queue<Puzzle*, vector<Puzzle*>, compare> temp;
 
   int keepCount = 100 - x;
 
+  // 
   for (int i = 0; i < keepCount; i++) {
     temp.push(members.top());
     members.pop();
@@ -38,6 +41,8 @@ void SudokuPopulation::cull(int x) {
   members = temp;
 }
 
+
+// creating new Sudokus from the 
 void SudokuPopulation::newGeneration() {
   priority_queue<Puzzle*, vector<Puzzle*>, compare> temp = members;
 
@@ -53,8 +58,10 @@ void SudokuPopulation::newGeneration() {
   }
 }
 
+// gives the best fitness value from the priortiy queue.
 int SudokuPopulation::bestFitness() { return fitness.howFit(*members.top()); }
 
+// gives the best Suduko from the priortiy queue
 Puzzle* SudokuPopulation::bestIndividual() {
   return members.top(); 
 }

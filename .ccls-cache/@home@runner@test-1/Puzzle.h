@@ -10,7 +10,9 @@ protected:
 
 public:
   ~Puzzle(){};
+// operating in
   friend void operator<<(ostream &, Puzzle *);
+// operating out
   friend void operator>>(istream &, Puzzle *);
 
   string getData() const { return data; };

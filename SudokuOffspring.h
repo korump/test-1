@@ -2,6 +2,8 @@
 #include "Reproduction.h"
 #include "Sudoku.h"
 
+
+// SudokuOffSpring is dervied from the Reproduction
 class SudokuOffspring : public Reproduction {
 private:
   bool valueChange[9][9];

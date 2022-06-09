@@ -5,6 +5,7 @@
 using namespace std;
 
 
+//Sudoku is dervied from Puzzle
 class Sudoku : public Puzzle {
 private:
   int grid[9][9];
