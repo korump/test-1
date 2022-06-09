@@ -5,6 +5,7 @@
 
 class GeneticAlgorithm{
 public:
+//constructor of GeneticAlgorithm
   GeneticAlgorithm(int populationSize, int maxGeneration);
 };
 
